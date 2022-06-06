@@ -1,0 +1,223 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>srtdash - ICO Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/metisMenu.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/slicknav.min.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- others css -->
+    <link rel="stylesheet" href="assets/css/typography.css">
+    <link rel="stylesheet" href="assets/css/default-css.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- preloader area start -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- preloader area end -->
+    <!-- page container area start -->
+    <div class="page-container">
+        <!-- sidebar menu area start -->
+        <div class="sidebar-menu">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <a href="index.html"><img src="assets/images/icon/logo.png" alt="logo"></a>
+                </div>
+            </div>
+            <div class="main-menu">
+                <div class="menu-inner">
+                    <nav>
+                        <ul class="metismenu" id="menu">
+                            <li class="active">
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Catégorie</span></a>
+                                <ul class="collapse">
+                                    <li><a th:href="@{/categoriesShow}">Liste de categories</a></li>
+                                    <li><a th:href="@{/categorieForm}">Formulaire d'ajout de categorie</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Articles
+                                    </span></a>
+                                <ul class="collapse">
+                                    <li><a th:href="@{/articlesShow}">Listes d'articles</a></li>
+                                    <li><a th:href="@{/articlesEtatSeuil}">Liste Seuil</a></li>
+                                    <li><a th:href="@{/articlesForm}">Formulaire d'ajout d'article</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Approvisionnement</span></a>
+                                <ul class="collapse">
+                                    <li><a th:href="@{/approShow}">Liste d'approvisionnement</a></li>
+                                    <li><a th:href="@{/approForm}">Formulaire d'ajout d'un approvisionnement</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>Ventes</span></a>
+                                <ul class="collapse">
+                                    <li><a  th:href="@{/venteShow}">Liste de vente</a></li>
+                                    <li><a th:href="@{/venteForm}">Formulaire d'ajout d'une vente</a></li>
+                                </ul>
+                            </li>
+                                                       
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- sidebar menu area end -->
+        <!-- main content area start -->
+        <div class="main-content">
+            <!-- header area start -->
+            <div class="header-area">
+                <div class="row align-items-center">
+                    <!-- nav and search button -->
+                    <div class="col-md-6 col-sm-8 clearfix">
+                        <div class="nav-btn pull-left">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="search-box pull-left">
+                            <form action="#">
+                                <input type="text" name="search" placeholder="Search..." required>
+                                <i class="ti-search"></i>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- profile info & task notification -->
+                    
+                            
+                   
+                </div>
+            </div>
+            <!-- header area end -->
+            <!-- page title area start -->
+            <div class="page-title-area">
+                <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="breadcrumbs-area clearfix">
+                            <h4 class="page-title pull-left">Formulaire de mise à jour d'un article</h4>
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-6 clearfix">
+                        <div class="user-profile pull-right">
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Message</a>
+                                <a class="dropdown-item" href="#">Settings</a>
+                                <a class="dropdown-item" href="#">Log Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- page title area end -->
+            <div class="main-content-inner">
+   
+               
+                <div class="container">      
+                    <form class="row g-3" th:action="@{/articles/update}" th:object="${Un_article}" method="post">
+                        <div class="Form-group">
+                            <input type="hidden" th:field="*{id}" class="Form-control">
+                            <input type="hidden" th:field="*{dateCreation}" class="Form-control">
+                            <input type="hidden" th:field="*{qteStock}" class="Form-control">
+                        </div>
+                        <div class="col-12">
+                            <label><h3>Designation</h3></label>
+                            <select class="form-select" id="validationDefault01" th:field="*{categorieId}" required>
+                                <option th:each="cat:${listeCategorie}"
+                                        th:value="${cat.id}"
+                                        th:utext="${cat.designation}">
+                
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationDefault02" class="form-label">Libelle</label>
+                            <input class="form-control" id="validationDefault02" type="text" th:field="*{libelle}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationDefault03" class="form-label">prix</label>
+                            <input class="form-control" id="validationDefault03" type="number" th:field="*{prix}">
+                        </div>
+                
+                        <div class="col-md-6">
+                            <label for="validationDefault04" class="form-label">Qte stock</label>
+                            <input type="number" th:field="*{qteStock}" class="form-control" id="validationDefault04">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationDefault05" class="form-label">Qte seuil</label>
+                            <input type="number" th:field="*{qteSeuil}" class="form-control" id="validationDefault05">
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Enregistrer</button>
+                        </div>
+                    </form>
+                </div>
+                
+                      <!-- exchange area end -->
+                </div>
+                <!-- row area start-->
+            </div>
+        </div>
+        <!-- main content area end -->
+        <!-- footer area start-->
+        <footer>
+            <div class="footer-area">
+                <p>© Copyright 2022. All right reserved. Template by <a >Amen AGBEDANOU & ABALO Pulfried</a>.</p>
+            </div>
+        </footer>
+        <!-- footer area end-->
+    </div>
+    <!-- page container area end -->
+    
+    <!-- jquery latest version -->
+    <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <!-- bootstrap 4 js -->
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/metisMenu.min.js"></script>
+    <script src="assets/js/jquery.slimscroll.min.js"></script>
+    <script src="assets/js/jquery.slicknav.min.js"></script>
+
+    <!-- start chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <!-- start highcharts js -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- start zingchart js -->
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+    </script>
+    <!-- all line chart activation -->
+    <script src="assets/js/line-chart.js"></script>
+    <!-- all pie chart -->
+    <script src="assets/js/pie-chart.js"></script>
+    <!-- others plugins -->
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/scripts.js"></script>
+</body>
+
+</html>
